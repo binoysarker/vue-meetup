@@ -3,7 +3,6 @@
     <v-layout
       row
       wrap
-
     >
       <v-flex xs12>
         <v-card class="primary">
@@ -15,8 +14,8 @@
           <v-card-title primary-title>
             <div class="white--text">
               <h3 class="headline mb-0 ">{{singleMeetup.title}}</h3>
-              <p>on {{singleMeetup.date}} it takes place</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci expedita harum illum ipsam iste itaque libero mollitia nihil perspiciatis placeat porro praesentium quasi quibusdam reiciendis reprehenderit, sed similique tempora voluptatum.</p>
+              <p>on {{singleMeetup.date}} it takes place in {{singleMeetup.location}}</p>
+              <p>{{singleMeetup.description}}</p>
             </div>
           </v-card-title>
           <v-card-actions>

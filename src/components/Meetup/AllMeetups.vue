@@ -28,7 +28,7 @@
                 <v-card-title primary-title>
                   <div class="white--text">
                     <h2 >{{item.title}}</h2>
-                    <p>{{item.date}}</p>
+                    <p>{{item.date }}</p>
                   </div>
                 </v-card-title>
                 <v-card-actions>
