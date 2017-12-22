@@ -1,9 +1,21 @@
 <template>
   <v-container>
+    <!--loading section-->
+    <v-layout row wrap>
+      <v-flex xs12 class="text-sm-center">
+        <v-progress-circular
+          indeterminate
+          :width="7"
+          :size="70"
+          v-if="loading"
+          color="primary"></v-progress-circular>
+      </v-flex>
+    </v-layout>
     <v-layout
       row
       v-for="(item,i) in meetups"
       :key="item.id"
+      v-if="item.id !== undefined"
       class="mb-2"
     >
       <v-flex xs12>
@@ -57,8 +69,14 @@
     name: 'AllMeetups',
     computed: {
       meetups () {
-        return this.$store.getters.loadedMeetups
+        return this.$store.getters.featuredMeetups
+      },
+      loading () {
+        return this.$store.getters.loading
       }
+    },
+    created () {
+      console.log(this.meetups)
     }
   }
 </script>

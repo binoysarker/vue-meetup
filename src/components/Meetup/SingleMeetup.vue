@@ -14,7 +14,7 @@
           <v-card-title primary-title>
             <div class="white--text">
               <h3 class="headline mb-0 ">{{singleMeetup.title}}</h3>
-              <p>on {{singleMeetup.date}} it takes place in {{singleMeetup.location}}</p>
+              <p>on {{singleMeetup.date}} at {{singleMeetup.time}} it takes place in {{singleMeetup.location}}</p>
               <p>{{singleMeetup.description}}</p>
             </div>
           </v-card-title>

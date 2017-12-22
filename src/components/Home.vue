@@ -7,7 +7,18 @@
         </v-flex>
       </v-layout>
       <!--carosel section-->
+      <!--loading section-->
       <v-layout row wrap>
+        <v-flex xs12 class="text-sm-center">
+          <v-progress-circular
+            indeterminate
+            :width="7"
+            :size="70"
+            v-if="loading"
+            color="primary"></v-progress-circular>
+        </v-flex>
+      </v-layout>
+      <v-layout row wrap v-if="!loading">
         <v-flex xs12>
           <v-carousel>
             <v-carousel-item
@@ -38,6 +49,9 @@
     computed: {
       meetups () {
         return this.$store.getters.featuredMeetups
+      },
+      loading () {
+        return this.$store.getters.loading
       }
     }
   }

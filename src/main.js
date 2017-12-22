@@ -37,12 +37,13 @@ new Vue({
       projectId: 'vue-meetup-829c8',
       storageBucket: 'vue-meetup-829c8.appspot.com'
     })
+    // check if the user is authenticated
     firebse.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log(user)
-      } else {
-        console.log(user + ' is not authenticate')
+        this.$store.dispatch('autoSignIn', user)
       }
     })
+    // now to fetch all the meetups in the database
+    this.$store.dispatch('loadAllMeetups')
   }
 })

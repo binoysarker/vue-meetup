@@ -18,7 +18,6 @@
         class="hidden-xs-only"
         v-for="(item,index) in menuItems"
         :key="item.title"
-
       >
         <v-btn
           flat
@@ -31,7 +30,20 @@
           </v-icon>
           {{item.title}}
         </v-btn>
-
+      </v-toolbar-items>
+      <v-toolbar-items
+        class="hidden-xs-only"
+      >
+        <v-btn
+          flat
+          v-if="userIsAuthenticated"
+          @click="onLogout"
+        >
+          <v-icon left>
+            exit_to_app
+          </v-icon>
+          Logout
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
@@ -41,7 +53,6 @@
       temporary
       v-model="sideNav"
       absolute
-
     >
       <v-layout right>
         <v-flex >
@@ -56,7 +67,6 @@
         </v-flex>
       </v-layout>
       <!--all the list items-->
-
       <v-container>
         <v-layout row>
           <v-flex>
@@ -64,7 +74,6 @@
               <v-list-tile
                 v-for="(item,index) in menuItems"
                 :key="item.title"
-
                 :to="item.link"
               >
                 <v-list-tile-action>
@@ -73,6 +82,17 @@
                 <v-list-tile-content>
                   <v-list-tile-title>
                     {{item.title}}
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile v-if="userIsAuthenticated"
+              @click="onLogout">
+                <v-list-tile-action>
+                  <v-icon >exit_to_app</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    Log out
                   </v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
@@ -102,6 +122,12 @@
         sideNav: false
       }
     },
+    methods: {
+      onLogout () {
+        this.$store.dispatch('logout')
+        this.$router.push('/')
+      }
+    },
     computed: {
       menuItems () {
         let menuItems = [
@@ -120,6 +146,9 @@
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
+    },
+    created () {
+      console.log(this.userIsAuthenticated)
     }
   }
 </script>
