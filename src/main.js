@@ -15,10 +15,15 @@ importing custom css
  */
 import css from './assets/css/alert.css'
 import Alert from './components/Share/Alert'
+import EditMeetup from './components/Meetup/Edit/EditMeetup'
+import RegisterMeetup from './components/Meetup/Registration/registerData'
 
 Vue.use(Vuetify)
 Vue.filter('filterDate', DateFilter)
 Vue.component('alert-section', Alert)
+Vue.component('edit-meetup', EditMeetup)
+Vue.component('register-section', RegisterMeetup)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -41,6 +46,7 @@ new Vue({
     firebse.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$store.dispatch('autoSignIn', user)
+        this.$store.dispatch('fetchUserData')
       }
     })
     // now to fetch all the meetups in the database

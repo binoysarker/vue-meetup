@@ -14,7 +14,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {path: '/', components: {'Home': Home}},
-    {path: '/meetups', components: {'Meetups': Meetups}},
+    {path: '/meetups', components: {'Meetups': Meetups}, beforeEnter: AuthGuard},
     {path: '/meetups/new', components: {'CreateMeetups': CreateMeetups}, beforeEnter: AuthGuard},
     {path: '/meetups/:id', components: {'SingleMeetup': SingleMeetup}},
     {path: '/profile', components: {'Profile': Profile}, beforeEnter: AuthGuard},

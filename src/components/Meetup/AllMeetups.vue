@@ -69,14 +69,18 @@
     name: 'AllMeetups',
     computed: {
       meetups () {
-        return this.$store.getters.featuredMeetups
+        try {
+          return this.$store.getters.featuredMeetups
+        } catch (error) {
+          console.log(error)
+          location.reload()
+        }
       },
       loading () {
         return this.$store.getters.loading
       }
     },
     created () {
-      console.log(this.meetups)
     }
   }
 </script>

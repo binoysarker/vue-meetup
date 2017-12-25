@@ -1,5 +1,19 @@
 <template>
     <v-container>
+      <v-layout row wrap>
+        <v-flex xs12 sm6 offset-sm3>
+          <v-card color="blue-grey darken-2" class="white--text">
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline">Welcome to meetup website</h3>
+                <div>
+                  <p>This is a website to set meetup time and date with your desired one. This website is designed using vue js, vuex and vuetify to design this website</p>
+                </div>
+              </div>
+            </v-card-title>
+          </v-card>
+        </v-flex>
+      </v-layout>
       <v-layout row wrap >
         <v-flex>
           <v-btn large router to="/meetups" class="pink darken-1">Explore Meetups</v-btn>
@@ -24,8 +38,6 @@
             <v-carousel-item
               v-for="(item,i) in meetups"
               :src="item.imageUrl"
-              :to="'/meetups/'+item.id"
-              style="cursor: pointer;"
               :key="item.id">
               <!--custom text-->
               <div class="title">{{item.title}}</div>
@@ -48,11 +60,18 @@
     name: 'Home',
     computed: {
       meetups () {
-        return this.$store.getters.featuredMeetups
+        try {
+          return this.$store.getters.featuredMeetups
+        } catch (error) {
+          console.log(error)
+        }
       },
       loading () {
         return this.$store.getters.loading
       }
+    },
+    created () {
+      // console.log(this.meetups.imageUrl)
     }
   }
 </script>

@@ -90,7 +90,6 @@
         this.$store.dispatch('SignUserIn', {email: this.email, password: this.password})
       },
       onDismissed () {
-        console.log('dismissed alert')
         this.$store.dispatch('clearError')
       }
     }
